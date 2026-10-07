@@ -1,0 +1,13 @@
+CREATE DATABASE docentes;
+
+USE Universidade2
+
+INSERT INTO docentes(id_docente, nm_docente)
+
+VALUES ('9233251013', 'LUIZ ANTONIO MOURA'),
+('9233133211', 'ANTONIO CARLOS SANT ANNA'),
+('9233108256', 'RAFAEL SOUZA SILVA'),
+('9233256808','ANA LUIZA MAGALHÃES')
+
+SELECT * FROM docente
+WHERE nm_docente LIKE 'antonio%'
