@@ -123,3 +123,21 @@ VALUES ('ANALISE DE SISTEMAS ORIENTADA A OBJETOS', '9233251013'),
        ('FUNDAMENTOS DE SISTEMAS OPERACIONAIS',    '9233199257'),
        ('ORGANIZACAO DE COMPUTADORES',             '9233199257');
 GO
+
+-- Inclusão na Tab. Notas (busca o id da disciplina pelo nome, sem depender do IDENTITY)
+INSERT INTO notas (id_disciplina, id_matricula, vl_np1, vl_np2, vl_exame)
+SELECT d.id_disciplina, v.id_matricula, v.vl_np1, v.vl_np2, v.vl_exame
+FROM (VALUES
+        ('G9403H0', 'BANCO DE DADOS',                          8.50, 7.00, NULL),
+        ('G9403H0', 'ENGENHARIA DE SOFTWARE',                  6.00, 4.50, 7.00),
+        ('G05CAI5', 'BANCO DE DADOS',                          4.00, 6.50, 6.00),
+        ('G05CAI5', 'ANALISE DE SISTEMAS ORIENTADA A OBJETOS', 9.00, 8.50, NULL),
+        ('T547BH0', 'ENGENHARIA DE SOFTWARE',                  3.50, 5.50, 5.00),
+        ('T547BH0', 'FUNDAMENTOS DE SISTEMAS OPERACIONAIS',    7.50, 8.00, NULL),
+        ('G73IEJ1', 'BANCO DE DADOS',                          10.00, 9.50, NULL),
+        ('G73IEJ1', 'ORGANIZACAO DE COMPUTADORES',             2.00, 3.00, 4.50),
+        ('G7737I4', 'ENGENHARIA DE SOFTWARE',                  5.00, 5.00, NULL),
+        ('G7737I4', 'BANCO DE DADOS',                          6.50, 4.00, 5.50)
+     ) AS v (id_matricula, ds_disciplina, vl_np1, vl_np2, vl_exame)
+JOIN disciplinas d ON d.ds_disciplina = v.ds_disciplina;
+GO
